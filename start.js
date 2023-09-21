@@ -4,6 +4,7 @@ const app = express();
 const usersRouter = require('./routes/users');
 const itemRoutes  = require('./routes/item');
 const PORT = 3000;
+app.use(express.urlencoded({extended: true}));
 
 //connect with the mongodb
 connectDB();
@@ -24,7 +25,7 @@ app.use('/api', itemRoutes);
 app.use('/api', usersRouter);
 
 // extended: true - parsing the URL-encoded data with the querystring library
-app.use(express.urlencoded({extended: true}));
+
 
 module.exports = app;
 
